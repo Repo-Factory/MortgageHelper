@@ -1,29 +1,12 @@
-import { Mortgage } from 'models/mortage';
-import { convertRate } from 'utility/converter';
-import { convertTerm } from 'utility/converter';
 import { readConfig } from 'utility/config';
-import { printAmortization } from 'utility/formatter';
-
-const calculateMonthlyPayment = (p: number, r: number, n: number): number => {
-    const rate = 1 + r;
-    const compound = rate ** n
-    const numerator = r * compound;
-    const denominator = compound - 1;
-    return p * numerator / denominator;
-}
-
-const calculateAmortization = (mortgage: Mortgage) => {
-    const price = mortgage.price;
-    const term = mortgage.term;
-    const rate = convertRate(mortgage.interest);
-    const numPayments = convertTerm(term);
-    const payment = calculateMonthlyPayment(price, rate, numPayments);
-    printAmortization(price, numPayments, rate, payment);
-}
+import { Inputs } from 'models/inputs';
+import { calculateAmortization } from 'modules/amortize/amortize';
+import { calculateBudget } from 'modules/budget/budget';
 
 const main = () => {
-    const mortgage: Mortgage = readConfig();
-    calculateAmortization(mortgage);
+    const inputs: Inputs = readConfig();
+    calculateAmortization(inputs.mortgage);
+    calculateBudget(inputs.budget);
 }
 
 main();

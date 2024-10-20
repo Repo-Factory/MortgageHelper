@@ -1,4 +1,4 @@
-import { Percentage } from 'models/percentage';
+import { Percentage } from 'types/percentage';
 
 const MONTHS_IN_YEAR = 12;
 

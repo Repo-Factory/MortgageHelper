@@ -1,5 +1,13 @@
 {
-    "price": 650000,
-    "interest": 6.6,
-    "term": 30 
+    "mortgage": {
+        "price": 600000,
+        "interest": 6.6,
+        "term": 30 
+    },
+    
+    "budget": {
+        "maxpayment": 4000,
+        "interest": 6.6,
+        "term": 30 
+    }
 }
